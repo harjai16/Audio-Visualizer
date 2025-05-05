@@ -44,12 +44,12 @@ const AudioPlayer = () => {
       setAudioFile(url);
       
       // Reset audio context when new file is loaded
-      // if (audioContextRef.current && audioRef.current) {
-      //   if (sourceRef.current) {
-      //     sourceRef.current.disconnect();
-      //   }
-      //   setupAudio();
-      // }
+      if (audioContextRef.current && audioRef.current) {
+        if (sourceRef.current) {
+          sourceRef.current.disconnect();
+        }
+        setupAudio();
+      }
     }
   };
 

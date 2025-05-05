@@ -1,4 +1,5 @@
 import AudioPlayer from './components/AudioPlayer';
+import LiveAudioPlayer from './components/LiveAudioPlayer';
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
         </h1>
         <AudioPlayer />
       </div>
+   <div className="mt-[50px]" >  <LiveAudioPlayer /></div>
     </main>
+     
   );
 } 
