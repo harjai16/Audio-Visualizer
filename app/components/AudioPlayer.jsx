@@ -10,10 +10,12 @@ const AudioPlayer = () => {
   const animationRef = useRef(null);
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
-  const sourceRef = useRef(null);
+  const sourceRef = useRef(null);                              
+
+  console.log(audioRef, "audioRef");
 
   useEffect(() => {
-    // Initialize audio context
+    setAudioFile('/Khaled-Berjawi-Azentio-2025_FINAL-1.mp3');
     const initAudio = async () => {
       try {
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
@@ -37,21 +39,16 @@ const AudioPlayer = () => {
     };
   }, []);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setAudioFile(url);
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const url = URL.createObjectURL(file);
+  //     setAudioFile(url);
       
-      // Reset audio context when new file is loaded
-      if (audioContextRef.current && audioRef.current) {
-        if (sourceRef.current) {
-          sourceRef.current.disconnect();
-        }
-        setupAudio();
-      }
-    }
-  };
+  //     // Reset audio context when new file is loaded
+     
+  //   }
+  // };
 
   const togglePlay = async () => {
     if (!audioRef.current || !audioContextRef.current) return;
@@ -133,12 +130,12 @@ const AudioPlayer = () => {
 
   return (
     <div className="flex flex-col items-center gap-4 p-4 bg-gray-800 rounded-lg">
-      <input
+      {/* <input
         type="file"
         accept="audio/*"
         onChange={handleFileChange}
         className="text-white"
-      />
+      /> */}
       
       {audioFile && (
         <>
